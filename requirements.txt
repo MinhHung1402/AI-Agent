@@ -1,0 +1,14 @@
+# Core LangChain components
+langchain-core
+langchain
+
+# Google Gemini integration for LangChain (make sure this is compatible with new google-genai)
+langchain-google-genai
+
+# LangGraph for building agentic workflows
+langgraph
+
+# For managing environment variables (like your Gemini API Key)
+python-dotenv
+
+toolbox-langchain 

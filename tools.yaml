@@ -1,0 +1,37 @@
+sources:
+  my-pg-source:
+    kind: postgres
+    host: 127.0.0.1
+    port: 5432
+    database: my_pgdb
+    user: postgres
+    password: 1402
+tools:
+  search-employee-by-city:
+    kind: postgres-sql
+    source: my-pg-source
+    description:  search for employee based on city.
+    parameters:
+      - name: Country
+        type: string
+        description:  The name of the city to search for.
+    statement: SELECT * FROM people WHERE City ILIKE '%' || $1 || '%';
+  search-employee-by-country:
+    kind: postgres-sql
+    source: my-pg-source
+    description: Search for employee based on country.
+    parameters:
+      - name: Country
+        type: string
+        description: The name of the Country.
+    statement: SELECT * FROM people WHERE Country ILIKE '%' || $1 || '%';
+  search-country:
+    kind: postgres-sql
+    source: my-pg-source
+    description: Search for all countries that have employees.
+    statement: SELECT DISTINCT country FROM people;
+toolsets:
+  my-toolset:
+    - search-employee-by-city
+    - search-employee-by-country
+    - search-country
